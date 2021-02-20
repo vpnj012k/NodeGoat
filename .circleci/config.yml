@@ -36,7 +36,9 @@ jobs:
       
       
       
-      
+      - run:
+          name: Snyk code test 
+          command: snyk test ~/project
             
       - run:
           name: Build image
