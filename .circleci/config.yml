@@ -18,7 +18,7 @@ jobs:
       
       - run:
           name: install dependencies
-          command: npm install
+          command: install-npm
             
       - run:
           name: Build image
