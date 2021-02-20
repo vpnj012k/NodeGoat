@@ -36,9 +36,15 @@ jobs:
       
       
       
-      - run:
-          name: Snyk code test 
-          command: snyk test ~/project
+
+  check_code:
+    docker:
+      - image: 'circleci/buildpack-deps:stretch'
+    steps:
+      - checkout
+      - snyk/install_snyk
+      - snyk/check_code_with_snyk
+
             
       - run:
           name: Build image
@@ -55,5 +61,6 @@ workflows:
   build:
     jobs:
       - install-node-example
+      
       - test
       - security
