@@ -3,6 +3,8 @@ orbs:
   node: circleci/node@4.1.1
   snyk: snyk/snyk@0.0.8
 
+working_directory: ~/project
+
 jobs:
   install-node-example:
     docker:
@@ -29,8 +31,10 @@ jobs:
       - image: circleci/buildpack-deps:stretch 
     environment:
       IMAGE_NAME: garethr/snyky
-    working_directory: ~/project
+    
     steps:
+      - attach_workspace:
+         at: ~/project
       - checkout
       - setup_remote_docker:
           version: 18.09.3
@@ -46,7 +50,7 @@ jobs:
           
           severity-threshold: low
           
-          additional-arguments: --sarif --json-file-output = ~/project/snyk-report.json
+          additional-arguments: --sarif --file = ~/project/snyk-report.json
           target-file: Dockerfile
 
       - store_artifacts:
