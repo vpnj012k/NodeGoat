@@ -29,6 +29,7 @@ jobs:
       - image: circleci/buildpack-deps:stretch 
     environment:
       IMAGE_NAME: garethr/snyky
+    working_directory: ~/project
     steps:
       - checkout
       - setup_remote_docker:
@@ -42,8 +43,15 @@ jobs:
           docker-image-name: $IMAGE_NAME
           monitor-on-build: false
           fail-on-issues: false
-          severity-threshold: medium
+          
+          severity-threshold: low
+          
+          additional-arguments: --sarif --sarif-file-output=~/project/snyk-report.sarif
           target-file: Dockerfile
+
+      - store_artifacts:
+          path: ~/project/snyk-report.sarif
+          destination: artifact-file
 
             
 workflows:
