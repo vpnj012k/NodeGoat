@@ -33,19 +33,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 18.09.3
-      
-      
-      
-
-  check_code:
-    docker:
-      - image: 'circleci/buildpack-deps:stretch'
-    steps:
-      - checkout
-      - snyk/install_snyk
-      - snyk/check_code_with_snyk
-
-            
       - run:
           name: Build image
           command: docker build --progress plain -t $IMAGE_NAME .
@@ -56,11 +43,11 @@ jobs:
           monitor-on-build: false
           target-file: Dockerfile
 
+            
 workflows:
   version: 2
   build:
     jobs:
       - install-node-example
-      
       - test
       - security
