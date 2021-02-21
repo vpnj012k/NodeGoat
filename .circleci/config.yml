@@ -43,6 +43,9 @@ jobs:
           command: docker build --progress plain -t $IMAGE_NAME .
           environment:
             DOCKER_BUILDKIT: 1
+      - run: 
+          name: clear report
+          command: mv -f ~/project/snyk-report.sarif 
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
           monitor-on-build: false
