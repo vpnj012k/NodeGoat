@@ -53,7 +53,7 @@ jobs:
           
           severity-threshold: low
           
-          additional-arguments: --sarif --sarif-file-output=~/project/snyk-report.sarif
+          additional-arguments: --sarif --json > ~/project/snyk-test-output.json
           target-file: Dockerfile
 
       - store_artifacts:
