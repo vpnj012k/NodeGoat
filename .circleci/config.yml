@@ -45,7 +45,7 @@ jobs:
             DOCKER_BUILDKIT: 1
       - run: 
           name: clear report
-          command: mv -f ~/project/snyk-report.sarif 
+          command: rm -f ~/project/snyk-report.sarif 
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
           monitor-on-build: false
