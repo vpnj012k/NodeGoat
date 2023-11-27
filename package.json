@@ -12,7 +12,7 @@
     "dont-sniff-mimetype": "^1.0.0",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "forever": "^2.0.0",
+    "forever": "^3.0.4",
     "helmet": "^3.21.1",
     "marked": "2.0.0",
     "mongodb": "^3.1.13",
@@ -21,7 +21,7 @@
     "serve-favicon": "^2.3.0",
     "swig": "^1.4.2",
     "underscore": "^1.8.3",
-    "snyk": "^1.458.0"
+    "snyk": "^1.685.0"
   },
   "comments": {
     "//": "a9 insecure components"
